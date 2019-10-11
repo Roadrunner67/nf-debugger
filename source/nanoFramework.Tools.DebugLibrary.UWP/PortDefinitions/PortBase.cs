@@ -11,7 +11,7 @@ using Windows.UI.Xaml;
 
 namespace nanoFramework.Tools.Debugger
 {
-    public abstract partial class PortBase
+    public abstract partial class PortBase : PortMessageBase
     {
         public static PortBase CreateInstanceForSerial(string displayName, Application callerApp, bool startDeviceWatchers = true)
         {

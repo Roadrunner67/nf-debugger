@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace nanoFramework.Tools.Debugger
 {
-    public abstract partial class PortBase
+    public abstract partial class PortBase : PortMessageBase
     {
         public override bool Equals(object obj)
         {
@@ -55,11 +55,6 @@ namespace nanoFramework.Tools.Debugger
         public ObservableCollection<NanoDeviceBase> NanoFrameworkDevices { get; protected set; }
 
         /// <summary>
-        /// Event that is raised when a log message is available.
-        /// </summary>
-        public event EventHandler<StringEventArgs> LogMessageAvailable;
-
-        /// <summary>
         /// Starts the device watchers.
         /// If they are already started this operation won't have any effect.
         /// </summary>
@@ -76,11 +71,6 @@ namespace nanoFramework.Tools.Debugger
         /// This operation resets the list of available devices and attempts to validate if a connected device it's a nanoDevice.
         /// </summary>
         public abstract void ReScanDevices();
-
-        public void OnLogMessageAvailable(string message)
-        {
-            LogMessageAvailable?.Invoke(this, new StringEventArgs(message));
-        }
 
     }
 }
